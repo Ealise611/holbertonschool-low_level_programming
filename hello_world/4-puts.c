@@ -1,7 +1,11 @@
 #include <stdio.h>
 
+
+
 /**
- * This is a program to print off the line
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
