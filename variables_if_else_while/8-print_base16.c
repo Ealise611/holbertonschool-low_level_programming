@@ -15,10 +15,9 @@ int main(void)
 {
 	putchar(digit);
 }
-
-        for (digit = 97; digit <= 102; digit++)
+	for (digit = 97; digit <= 102; digit++)
 {
-        putchar(digit);
+	putchar(digit);
 }
 
 putchar('\n');
