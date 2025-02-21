@@ -20,6 +20,11 @@ void times_table(void)
 		{
 			c = a * b;
 
+			if (b == 0)
+			{
+				_putchar(c + '0');
+			}
+
 			if (c >= 10)
 			{
 				_putchar((c / 10) + '0');/*prints the ten digit*/
@@ -27,8 +32,8 @@ void times_table(void)
 			}
 			else
 			{
-				_putchar((c % 10) + '0');/*print the units digit*/
 				_putchar(' ');/*print a space for single-digit alignment*/
+				_putchar((c % 10) + '0');/*print the units digit*/
 			}
 
 			if (b < 9)
