@@ -27,8 +27,8 @@ void times_table(void)
 			}
 			else
 			{
-				_putchar(' ');/*print a space for single-digit alignment*/
 				_putchar((c % 10) + '0');/*print the units digit*/
+				_putchar(' ');/*print a space for single-digit alignment*/
 			}
 
 			if (b < 9)
