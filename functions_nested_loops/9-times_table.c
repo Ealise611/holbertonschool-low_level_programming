@@ -23,17 +23,18 @@ void times_table(void)
 			if (c >= 10)
 			{
 				_putchar((c / 10) + '0');/*prints the ten digit*/
-				_putchar(' ');
+				_putchar((c % 10) + '0');
 			}
 			else
 			{
 				_putchar(' ');/*print a space for single-digit alignment*/
+				_putchar((c % 10) + '0');/*print the units digit*/
 			}
-			_putchar((c % 10) + '0');/*print the units digit*/
 
 			if (b < 9)
 			{
 				_putchar(',');
+				_putchar(' ');
 
 			}
 		}
