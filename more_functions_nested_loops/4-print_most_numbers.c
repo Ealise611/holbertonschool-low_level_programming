@@ -18,7 +18,6 @@ void print_most_numbers(void)
 		{
 			a++;
 			continue;
-	
 		}
 
 		_putchar(a++ + '0');
