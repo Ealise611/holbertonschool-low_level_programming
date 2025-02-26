@@ -7,13 +7,13 @@
  *
  * Description:
  * This function takes a pointer to a character array (string) as its parameter
- * and outputs the string to the standard output (stdout), followed by a newline
+ * and outputs the string to the standard output (stdout).
  * character. It does not return any value.
  */
 
 void _puts(char *str)
 {
-	while(*str != '\0')
+	while (*str != '\0')
 	{
 		_putchar(*str);
 		str++;
