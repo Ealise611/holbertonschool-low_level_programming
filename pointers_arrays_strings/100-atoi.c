@@ -21,13 +21,13 @@ int _atoi(char *s)
 	int result = 0;
 	int sign = 1;
 
-	while ((*s < '0' || *s > '9') && *s != '\0')/*this will iterate through the loop until we find everything up to the first int*/
+	while ((*s < '0' || *s > '9') && *s != '\0')/*this will iterate through*/
+	/*the loop until we find everything up to the forst int*/
 	{
-		if ( *s == '-')/*this will find all the '-' signs and add to it*/
+		if (*s == '-')/*this will find all the '-' signs and add to it*/
 		{
 			count_of_sign++;
 		}
-		
 		s++;
 
 	}
@@ -35,7 +35,8 @@ int _atoi(char *s)
 	{
 		sign = -1;
 	}
-	while ((*s >= '0' && *s <= '9') && *s != '\0')/*finding the integers after we did the first checking*/
+	while ((*s >= '0' && *s <= '9') && *s != '\0')/*finding the*/
+							/*integers after we did the first checking*/
 	{
 		if (!result)/*checking if there is a result*/
 		{
@@ -43,12 +44,11 @@ int _atoi(char *s)
 		}
 		else
 		{
-			result = ((result * 10)  + ((*s - '0') * sign));/*find the first number and times 10 to make it a double digit, and add the second single digit that we find*/
+			result = ((result * 10)  + ((*s - '0') * sign));
+			/*find the first number and times 10 to make it a double digit*/
+			/*and add the second single digit that we find*/
 		}
 		s++;
 	}
 	return (result);
-
-
 }
-		
