@@ -1,5 +1,20 @@
 #include "main.h"
 
+/**
+ * _atoi - Converts a string to an integer.
+ * @s: The input string to be converted.
+ *
+ * Description: This function traverses the input string `s`, skips any leading
+ * whitespace characters, and processes optional '+' and '-' signs to determine
+ * the sign of the resulting integer. It then converts the subsequent numeric
+ * characters into an integer value. If no numeric characters are found, the
+ * function returns 0. The function also handles potential integer overflow
+ * and underflow by returning `INT_MAX` or `INT_MIN` respectively.
+ *
+ * Return: The integer value represented by the string `s`. Returns 0 if no
+ * numeric characters are found.
+ */
+
 int _atoi(char *s)
 {
 	int count_of_sign = 0;
