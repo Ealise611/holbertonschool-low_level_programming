@@ -22,11 +22,6 @@ char *_strncpy(char *dest, char *src, int n)
 {
 	char *update_dest = dest;
 
-	while (*update_dest != '\0')
-	{
-		update_dest++;
-
-	}
 	while (n >= 0 && *src != '\0')
 	{
 		*update_dest = *src;
@@ -41,6 +36,5 @@ char *_strncpy(char *dest, char *src, int n)
 		update_dest++;
 		n--;
 	}
-*update_dest = '\0';
 return (dest);
 }
