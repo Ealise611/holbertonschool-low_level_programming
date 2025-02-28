@@ -18,15 +18,15 @@
 
 char *_strcpy(char *dest, char *src)
 {
-	char c = 99;
-	char *dst = dest;
 
-	while (c != 0)
+	char *update_dest = dest;/*Save the update_dest address of dest*/
+
+	while (*src != '\0')/*loop until the end of the source string*/
 	{
-		c = *src;
-		*dest = c;
-		dest++;
-		src++;
+		*dest = *src;/*copy source to dest*/
+		dest++;/*move to the next position in dest*/
+		src++;/*move to the next position in source*/
 	}
-	return (dst);
+	*dest = '\0';/* add null to the end of the dest*/
+	return (update_dest);/*return the updated dest addres of dest*/
 }
