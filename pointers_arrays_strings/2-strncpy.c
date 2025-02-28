@@ -22,7 +22,7 @@ char *_strncpy(char *dest, char *src, int n)
 {
 	char *update_dest = dest;
 
-	while (n >= 0 && *src != '\0')
+	while (n > 0 && *src != '\0')
 	{
 		*update_dest = *src;
 		src++;
