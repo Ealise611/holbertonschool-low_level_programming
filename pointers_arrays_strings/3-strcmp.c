@@ -13,10 +13,10 @@
  * Description:
  * This function compares characters of s1 and s2 one by one. If a mismatch
  * occurs, it returns the difference between the ASCII values of the mismatched
- * characters. 
+ * characters.
  * If all characters match until the end of both strings, it returns 0.
  * If one string is shorter, the comparison stops at the null terminator ('\0'),
- * and the difference is calculated against the 
+ * and the difference is calculated against the
  * remaining character in the longer string.
  */
 
