@@ -14,12 +14,13 @@ void reverse_array(int *a, int n)
 	int count = 0;
 	char temp;
 
-	while (count < (n / 2))
+	while (count < n)
 	{
 		temp = a[count];
-		a[count] = a[n - 1 - count];
-		a[n - 1 - count] = temp;
+		a[count] = a[n - 1];
+		a[n - 1] = temp;
 		count++;
+		n--;
 	}
 }
 
