@@ -23,6 +23,13 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 		temp++;
 		n--;
 	}
+	while (n > 0)
+	{
+		*temp = *src;
+                src++;
+                temp++;
+                n--;
+	}
 	return (dest);
 }
 
