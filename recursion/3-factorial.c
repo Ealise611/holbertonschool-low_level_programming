@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * factorial(int n) - functions that calculate the factorial of n
+ * factorial - functions that calculate the factorial of n
  * @n: n times factorial
  *
  * Description: This function calcualte factorial of n
@@ -23,4 +23,4 @@ int factorial(int n)
 	{
 		return (n * factorial(n - 1));
 	}
-}	
+}
