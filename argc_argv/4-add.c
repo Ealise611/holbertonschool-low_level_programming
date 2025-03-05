@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	{
 		if (!is_positive_digit(argv[i]))
 		{
-			printf("Errod\n");
+			printf("Error\n");
 			return (1);
 		}
 		sum += atoi(argv[i]);
