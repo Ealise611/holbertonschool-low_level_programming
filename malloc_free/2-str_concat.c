@@ -47,5 +47,6 @@ char *str_concat(char *s1, char *s2)
 	{
 		string_together[size1 + i] = s2[i];
 	}
+	string_together[size_total] = '\0';
 	return (string_together);
 }
