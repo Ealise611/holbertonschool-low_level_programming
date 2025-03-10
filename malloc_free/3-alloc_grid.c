@@ -14,11 +14,43 @@
  * memory is freed, and the function returns NULL.
  *
  * Return: A pointer to the allocated 2D array.
- *         Returns NULL if width or height is <= 0 or if memory allocation fails.
+ * Returns NULL if width or height is <= 0 or if memory allocation fails.
  *
  * Note: The caller is responsible for freeing the allocated memory.
  */
 
 int **alloc_grid(int width, int height)
 {
+	int **grid;
+	int i, j;
 
+	if (width <= 0 || height <= 0)
+	{
+		return (NULL);
+	}
+	/*allocation memory for height*/
+	grid = malloc(sizeof(int *) * height);
+	if (grid == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < height; i++)
+	{
+		/*allocate memory for width*/
+		grid[i] = malloc(sizeof(int) * width);
+		if (grid[i] == NULL)
+		{
+			for (j = 0; j < i; j++)
+			{
+				free(grid[j]);
+			}
+			free(grid);
+			return (NULL);
+		}
+		for (j = 0; j < height; j++;)
+		{
+			grid[i][j] = 0;
+		}
+	}
+	return (grid);
+}
