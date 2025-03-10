@@ -21,7 +21,7 @@ char *str_concat(char *s1, char *s2)
 {
 	char *string_together;
 	int i;
-	int size1, size2;
+	int size1 = 0, size2 = 0;
 	int size_total = 0;
 
 	while (s1[size1] != '\0')
