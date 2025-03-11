@@ -29,6 +29,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	int i;
 	int size1 = 0, size2 = 0;
 	int size_total = 0;
+	int j = (int)n;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -40,16 +41,16 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	while (s2[size2] != '\0')
 		size2++;
 
-	if (n >= (unsigned int)size2)
-		n = size2;
-	size_total = size1 + n;
+	if (j >= (size2))
+		j = size2;
+	size_total = size1 + j;
 
 	string_together = malloc((size_total + 1) * sizeof(char));
 	if (string_together == NULL)
 		return (NULL);
 	for (i = 0; i < size1; i++)
 		string_together[i] = s1[i];
-	for (i = 0; i < (int)n; i++)
+	for (i = 0; i < j; i++)
 		string_together[size1 + i] = s2[i];
 	string_together[size_total] = '\0';
 
