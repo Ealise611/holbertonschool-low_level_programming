@@ -3,7 +3,7 @@
 
 /**
  * free_grid - free grid
- * @**grid: pointer to *grid
+ * @grid: pointer to *grid
  * @height: height
  * Description: this function free the grid previously created
  */
