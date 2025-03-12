@@ -19,6 +19,8 @@ struct dog
 
 
 /*function prototypes*/
+
+
 /**
  * init_dog - Initializes a dog structure
  * @d: Pointer to the dog structure to be initialized
