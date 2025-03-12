@@ -2,11 +2,12 @@
 #define MAIN_H
 
 /**
- * struct dog 
+ * struct dog - short description
  * @*name: name
  * @*owner: owner
  * @age: owner age
  *
+ * Description: Long description
  */
 
 struct dog
