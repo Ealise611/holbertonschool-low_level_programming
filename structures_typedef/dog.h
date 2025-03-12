@@ -17,8 +17,6 @@ struct dog
 	float age;
 };
 
-/* Typedef for struct dog */
-typedef struct dog dog_t;
 
 /*function prototypes*/
 /**
