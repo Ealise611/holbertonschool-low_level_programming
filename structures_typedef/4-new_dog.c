@@ -19,7 +19,7 @@
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int i, len_name = 0, len_owner = 0;
+	int i = 0, len_name = 0, len_owner = 0;
 	dog_t *dog;/*declare the structure pointer to dog_t*/
 
 	if (name == NULL || owner == NULL)
