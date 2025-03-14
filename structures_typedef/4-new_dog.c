@@ -49,19 +49,16 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(dog);
 		return (NULL);
 	}
-	i= 0;
 
-	while (i < len_name)
+	for (i = 0; i < len_name; i++)
 	{
 		dog->name[i] = name[i];
-		i++;
 	}
 	dog->name[len_name] = '\0';
 
-	while (i < len_owner)
+	for (i = 0; i < len_owner; i++)
 	{
 		dog->owner[i] = owner[i];
-		i++;
 	}
 	dog->owner[len_owner] = '\0';
 	
