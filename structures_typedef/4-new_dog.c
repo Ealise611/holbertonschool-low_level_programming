@@ -19,7 +19,7 @@
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int len_name = 0, len_owner = 0;
+	int i, len_name = 0, len_owner = 0;
 	dog_t *dog;/*declare the structure pointer to dog_t*/
 
 	if (name == NULL || owner == NULL)
@@ -55,7 +55,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	while( i != '\0')
 	{
 		dog->name[i] = name[i];
-		dog->age[i] = age[i];
+		dog->age = age;
 		dog->owner[i] = owner[i];
 		i++;
 	}
