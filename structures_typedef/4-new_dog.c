@@ -23,9 +23,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *dog;/*declare the structure pointer to dog_t*/
 
 	if (name == NULL || owner == NULL)
-	{
 		return (NULL);
-	}
 	while (name[len_name] != '\0')
 		len_name++;/*find the length for name*/
 	while (owner[len_owner] != '\0')
@@ -33,35 +31,29 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	dog = malloc(sizeof(dog_t));/*allocate memory for structure*/
 	if (dog == NULL)
-	{
 		return (NULL);
-	}
-	dog->name = malloc(sizeof(char) * (len_name + 1)); /*allocate memory for name*/
+	/*allocate memory for name*/
+	dog->name = malloc(sizeof(char) * (len_name + 1));
 	if (dog->name == NULL)
 	{
 		free(dog);
 		return (NULL);
 	}
-	dog->owner = malloc(sizeof(char) * (len_owner + 1)); /*allocate memory for owner*/
-	if (dog->owner == NULL)	
+	/*allocate memory for owner*/
+	dog->owner = malloc(sizeof(char) * (len_owner + 1));
+	if (dog->owner == NULL)
 	{
 		free(dog->name);
 		free(dog);
 		return (NULL);
 	}
-
 	for (i = 0; i < len_name; i++)
-	{
 		dog->name[i] = name[i];
-	}
 	dog->name[len_name] = '\0';
 
 	for (i = 0; i < len_owner; i++)
-	{
 		dog->owner[i] = owner[i];
-	}
 	dog->owner[len_owner] = '\0';
-	
 	dog->age = age;
 	return (dog);
 }
