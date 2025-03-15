@@ -6,8 +6,8 @@
  * @d: Pointer to the dog structure whose memory is to be freed
  *
  * Description: This function frees the memory allocated for the name and owner
- * fields of a dog structure. It also frees the structure itself. It checks 
- * if the fields and the structure are not NULL before freeing them to avoid 
+ * fields of a dog structure. It also frees the structure itself. It checks
+ * if the fields and the structure are not NULL before freeing them to avoid
  * undefined behavior.
  */
 
