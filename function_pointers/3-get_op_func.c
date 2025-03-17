@@ -30,7 +30,7 @@ int (*get_op_func(char *s))(int, int)
 
 	while (ops[i].op != NULL)/*loop through array*/
 	{
-		if (*s == *(ops[i].op))/* check if input operator matches*/
+		if (*s == *(ops[i].op) && *(s + 1) == '\0')/* check if input operator matches*/
 		{
 			return (ops[i].f);/*return the function*/
 		}
