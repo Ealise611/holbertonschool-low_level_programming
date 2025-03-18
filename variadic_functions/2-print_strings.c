@@ -8,8 +8,10 @@
  * @n: number of strings pass into function
  * @separator: the string to be printed between strings
  *
- * Description: This function takes strings and print them, seperated by the given separator string.
- * if separator is NULL, dont print. if one of the string in NULL print (nil), follow by new line.
+ * Description: This function takes strings and print them
+ * seperated by the given separator string.
+ * if separator is NULL, dont print.
+ * If one of the string in NULL print (nil), follow by new line.
  */
 
 
@@ -25,10 +27,8 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		str = va_arg(args, char *);
-	       	if (str == NULL)
-                {
-                        str = "(nil)";
-                }
+		if (str == NULL)
+			str = "(nil)";
 		printf("%s", str);
 		if (separator != NULL && i < (n - 1))
 			printf("%s", separator);
