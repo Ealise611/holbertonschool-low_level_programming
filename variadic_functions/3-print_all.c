@@ -2,53 +2,96 @@
 #include <stdarg.h>
 #include "variadic_functions.h"
 #include <stdio.h>
-#include <string.h>
 
-/* prototypes */
-typedef struct print
-{
-	char *specifier;
-	void (*print_func)(va_list arg);
-}print_t;
 
-void print_char(va_list arg);
-void print_integer(va_list arg);
-void print_float(va_list arg);
-void print_string(va_list arg);
-
-/*
+/**
  * print_all - this function prints anything that is passed in
  * @format: the characters that contains specifier
  *
- * Return: this function does not return anything
+ * Description: print_all prints everything
  */
 
 void print_all(const char * const format, ...)
 {
-	int i; len;
-	va_list args;
-	va_start(args, format);
-
-	print_t print[] = {
+	print_t functions[] = {
 	{"c", print_char},
 	{"i", print_integer},
 	{"f", print_float},
 	{"s", print_string},
 	};
 
-	len = 4;
+	int i, j, len = 4;
+	va_list args;
+	char *separator = "";
 
+	va_start(args, format);
 
+	i = 0;
 
-
-	for (i = 0; i < n; i++)
+	while (format && format[i])/*loop through array*/
 	{
-		str = va_arg(args, char *);
-		if (str == NULL)
-			str = "(nil)";
-		printf("%s", str);
-		if (separator != NULL && i < (n - 1))
+		j = 0;
+
+		while (j < len && format[i] != (*(functions[j].specifier)))
+			j++;
+
+		/* check if input matches  format*/
+		if (j < len)
+		{
 			printf("%s", separator);
+			functions[j].print_func(args);
+			separator = ", ";
+		}
+		i++;
 	}
+
+
 	printf("\n");
 	va_end(args);
+}
+
+/* functions for printing different datatypes*/
+/**
+ * print_char - print char
+ * @arg: va list
+ */
+void print_char(va_list arg)
+{
+	char str;
+
+	str = va_arg(arg, int);
+	printf("%c", str);
+}
+/**
+ * print_integer - print integer
+ * @arg: va list
+ */
+void print_integer(va_list arg)
+{
+	int num;
+
+	num = va_arg(arg, int);
+	printf("%d", num);
+}
+/**
+ * print_float - print float
+ * @arg: va list
+ */
+void print_float(va_list arg)
+{
+	float num;
+
+	num = va_arg(arg, double);
+	printf("%f", num);
+}
+/**
+ * print_string - print string
+ * @arg: va list
+ */
+void print_string(va_list arg)
+{
+	char *str;
+
+	str = va_arg(arg, char*);
+	printf("%s", str);
+}
