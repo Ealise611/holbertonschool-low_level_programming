@@ -14,7 +14,8 @@
 
 void free_list(list_t *head)
 {
-	list_t * temp;/*declaring a temp pointer*/
+	/*declaring a temp pointer*/
+	list_t *temp;
 
 	if (head == NULL)
 		return;
@@ -23,7 +24,7 @@ void free_list(list_t *head)
 	{
 		temp = head->next;/*save the reference to the next node*/
 		free(head->str);/*free the string*/
-		free (head);/*free the current node*/
+		free(head);/*free the current node*/
 		head = temp;/*move to the next node*/
 	}
 }
