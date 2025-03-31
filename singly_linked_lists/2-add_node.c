@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include "lists.h"
 
+/*prototype*/
+int _strlen(const char *s);
+
+
 /**
  * add_node - Adds a new node at the beginning of a list_t list
  * @head: Double pointer to the head of the linked list
@@ -31,11 +35,19 @@ list_t *add_node(list_t **head, const char *str)
 		return(NULL);
 	}
 
-	new_node->len = strlen(str);
+	new_node->len = _strlen(str);
 	new_node->next = *head;
 	*head = new_node;
 
 	return(new_node);
+}
+
+int _strlen(const char *s)
+{
+	int len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }
 
 
