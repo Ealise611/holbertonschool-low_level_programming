@@ -4,7 +4,7 @@
 #include "lists.h"
 
 /**
- * print_dlistint_len - Prints num of elements of a dlistint_t list
+ * dlistint_len - Prints num of elements of a dlistint_t list
  * @h: Pointer to the head of the linked list
  *
  * Description: Iterates through a linked list of type list_t
