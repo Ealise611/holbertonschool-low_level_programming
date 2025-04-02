@@ -6,7 +6,6 @@
 /**
  * sum_dlistint - sum of a dlistint_t list.
  * @head: A double pointer to the head of the doubly linked list.
- * @n: The integer value to store in the new node.
  *
  * Description: This function adds the all the value in the list.
  * if the list is empty, return 0.
