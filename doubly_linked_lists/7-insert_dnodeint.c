@@ -6,7 +6,7 @@
 /**
  * insert_dnodeint_at_index - insert a new node at the
  * index of a dlistint_t list.
- * @head: A double pointer to the head of the doubly linked list.
+ * @h: A double pointer to the head of the doubly linked list.
  * @idx: the index position to be inserted
  * @n: The integer value to store in the new node.
  *
