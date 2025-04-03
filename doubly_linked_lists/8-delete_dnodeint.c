@@ -26,26 +26,32 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	/*if the index is 0*/
 	if (index == 0)
 	{
+		/*change head to next node*/
 		*head = temp->next;
 		if (*head != NULL)
 		{
+			/*update the prev one to NULL since it's at head*/
 			(*head)->prev = NULL;
 		}
+		/*free the original temp after deletion*/
 		free(temp);
 		return (1);
 	}
-
+	/*go through the list and fine the node to be deleted*/
 	while (temp != NULL && counter < index)
 	{
 		temp = temp->next;
 		counter++;
 	}
+	/* if cannot find return -1*/
 	if (temp == NULL)
 		return (-1);
+	/*then adjust the pointer to skip the node to be deleted*/
 	if (temp->next != NULL)
 		temp->next->prev = temp->prev;
 	if (temp->prev != NULL)
 		temp->prev->next = temp->next;
+	/*free the node that got deleted*/
 	free(temp);
 	return (1);
 }
