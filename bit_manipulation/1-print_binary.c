@@ -26,7 +26,7 @@ void print_binary(unsigned long int n)
 	int started = 0;/*flag to print or not*/
 
 	if (n == 0)
-		_putchar(0);
+		_putchar('0');
 
 	while (index >= 0)
 	{
