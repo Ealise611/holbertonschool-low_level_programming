@@ -21,6 +21,11 @@
 
 void print_binary(unsigned long int n)
 {
+	if (n == 0)
+	{
+		_putchar(0);
+	}
+
 	int total_bits = sizeof(n) * 8;
 	int index = total_bits - 1;
 	int started = 0;/*flag to print or not*/
