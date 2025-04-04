@@ -34,7 +34,7 @@ void print_binary(unsigned long int n)
 		{
 			_putchar('1');
 			started = 1;
-		}	
+		}
 		else if (started)
 			_putchar('0');
 		index--;
