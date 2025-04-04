@@ -12,7 +12,7 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	int total_bits = sizeof(n) * 8;
+	unsigned int total_bits = sizeof(n) * 8;
 
 	if (index >= total_bits)
 		return (-1);
