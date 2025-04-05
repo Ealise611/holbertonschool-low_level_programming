@@ -46,12 +46,14 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
 		exit(97);
 	}
+	/*open file_from for reading*/
 	file_from = open(argv[1],O_RDONLY);
 	if (file_from == -1)
 	{
 		dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
+	/*open file_to for writing, create if needed, truncate if exist*/
 	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (file_to == -1)
 	{
@@ -68,6 +70,8 @@ int main(int argc, char *argv[])
 			dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
+		/*read the next chunk of the file*/
+		bytes_read = read(file_from, buffer, BUFFER_SIZE);
 	}
 	if (bytes_read == -1)
 	{
