@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "main.h"
 #include <fcntl.h>
-
+#include <unistd.h>
 /**
  * read_textfile - Reads a text file and prints it to the standard output.
  * @filename: The name of the file to be read.
@@ -16,7 +16,7 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *file;
+	int file;
 	ssize_t bytes_read;
 	ssize_t bytes_written;
 	char *buffer;
@@ -24,27 +24,35 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	/*edge case if filename is NULL return 0*/
 	if (filename == NULL)
 		return (0);
-	file = fopen(filename, "r");
+	file = open(filename, O_RDONLY);
 	/*if file cannot be opened return 0*/
-	if (file == NULL)
+	if (file == -1)
+	{
 		return (0);
+	}
 	buffer = malloc(letters);
 	if (buffer == NULL)
 	{
 		/*if malloc fails close file*/
-		fclose(file);
+		close(file);
 		return (0);
 	}
-	bytes_read = fread(buffer, sizeof(char), letters, file);
-	bytes_written = fwrite(buffer, sizeof(char), bytes_read, stdout);
+	bytes_read = read(file, buffer, letters);
+	if (bytes_read == -1)
+	{
+		free(buffer);
+		close(file);
+		return (0);
+	}
+	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
 	if (bytes_written != bytes_read)
 	{
 		free(buffer);
-		fclose(file);
+		close(file);
 		return (0);
 	}
 	free(buffer);
-	fclose(file);
+	close(file);
 	return (bytes_read);
 }
 
