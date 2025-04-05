@@ -8,32 +8,12 @@
 #define BUFFER_SIZE 1024
 
 /**
- * main - Copies the content of one file to another.
- * @argc: The number of arguments passed to the program.
- * @argv: An array of strings representing the arguments.
+ * copy_file - Copies the content of one file to another.
+ * @file_from: source file.
+ * @file_to: destination file.
  *
  * Description: cp file_from file_to
  *
- * - If the number of arguments is incorrect, exits with code 97 and prints 
- *   "Usage: cp file_from file_to" to the standard error.
- * - If `file_to` already exists, it is truncated.
- * - If `file_from` does not exist, or cannot be read, exits with code 98 and prints
- *   "Error: Can't read from file NAME_OF_THE_FILE" to the standard error.
- *   where NAME_OF_THE_FILE is the first argument.
- * - If `file_to` cannot be created, or there is a failure when writing to it,
- *   exits with code 99 and prints "Error: Can't write to NAME_OF_THE_FILE" 
- *   to the standard error.
- * - If there is an error closing any file descriptor, exits with code 100 and prints
- *   "Error: Can't close fd FD_VALUE" to the standard error, where FD_VALUE is 
- *   the file descriptor value.
- * 
- * Permissions of the created file should be `rw-rw-r--`. If the file already 
- * exists, the permissions should remain unchanged.
- * 
- * The program reads 1024 bytes at a time from `file_from` to minimize system 
- * calls, using a buffer.
- * 
- * Return: 0 on success, exit with codes 97, 98, 99, or 100 on errors.
  */
 
 
@@ -45,17 +25,17 @@ int copy_file(const char *file_from, const char *file_to)
 	char buffer[BUFFER_SIZE];
 
 	/*open file_from for reading*/
-	fd_from = open(file_from,O_RDONLY);
+	fd_from = open(file_from, O_RDONLY);
 	if (fd_from == -1)
 	{
-		dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 	/*open file_to for writing, create if needed, truncate if exist*/
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_to == -1)
 	{
-		dprintf(STDERR_FILENO,"Error: Can't write to %s\n", file_to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
 	/*cp file*/
@@ -66,7 +46,7 @@ int copy_file(const char *file_from, const char *file_to)
 		bytes_written = write(fd_to, buffer, bytes_read);
 		if (bytes_written == -1)
 		{
-			dprintf(STDERR_FILENO,"Error: Can't write to %s\n", file_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
 		/*read the next chunk of the file*/
@@ -74,7 +54,7 @@ int copy_file(const char *file_from, const char *file_to)
 	}
 	if (bytes_read == -1)
 	{
-		dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 	if (close(fd_from) == -1)
@@ -89,6 +69,14 @@ int copy_file(const char *file_from, const char *file_to)
 	}
 	return (0);
 }
+
+/**
+ * main - Copies the content of one file to another.
+ * @argc: The number of arguments passed to the program.
+ * @argv: An array of strings representing the arguments.
+ *
+ * Description: cp file_from file_to
+ */
 
 int main(int argc, char *argv[])
 {
