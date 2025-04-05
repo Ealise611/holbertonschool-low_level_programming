@@ -62,6 +62,12 @@ int main(int argc, char *argv[])
 	}
 	/*cp file*/
 	bytes_read = read(file_from, buffer, BUFFER_SIZE);
+
+	if (bytes_read == -1)
+	{
+		dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	while (bytes_read > 0)
 	{
 		bytes_written = write(file_to, buffer, bytes_read);
