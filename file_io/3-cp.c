@@ -46,7 +46,11 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
+	if ((access(argv[1], R_OK) == -1))
+	{
+		dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 
 	/*open file_from for reading*/
 	file_from = open(argv[1],O_RDONLY);
