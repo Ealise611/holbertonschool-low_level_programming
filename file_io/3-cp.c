@@ -39,12 +39,7 @@ int copy_file(const char *file_from, const char *file_to)
 		exit(99);
 	}
 	/*cp file*/
-	bytes_read = read(fd_from, buffer, BUFFER_SIZE);
-	if (bytes_read == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-		exit (98);
-	}
+	bytes_read = read(fd_from, buffer, BUFFER_SIZE);}
 
 	while (bytes_read > 0)
 	{
