@@ -3,6 +3,9 @@
 #include "main.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <errno.h>
+
+#define BUFFER_SIZE 1024
 
 /**
  * main - Copies the content of one file to another.
@@ -36,7 +39,7 @@ int main(int argc, char *argv[])
 {
 	int file_from, file_to;
 	ssize_t bytes_read, bytes_written;
-	char buffer[1024];
+	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
 	{
@@ -56,7 +59,7 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 	/*cp file*/
-	bytes_read = read(file_from, buffer, 1024);
+	bytes_read = read(file_from, buffer, BUFFER_SIZE);
 	while (bytes_read > 0)
 	{
 		bytes_written = write(file_to, buffer, bytes_read);
