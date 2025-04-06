@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
+	lseek(file_from, 0, SEEK_SET);
 	/*open file_to for writing, create if needed, truncate if exist*/
 	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (file_to == -1)
