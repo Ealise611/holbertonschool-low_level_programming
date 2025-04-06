@@ -39,8 +39,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
-	ssize_t bytes_read, bytes_written;
+	int file_from, file_to, w,r;
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
@@ -49,20 +48,12 @@ int main(int argc, char *argv[])
 
 	/*open file_from for reading*/
 	file_from = open(argv[1], O_RDONLY);
+	r = read(file_from, buffer, BUFFER_SIZE);
+
 	if (file_from == -1)
 	{
-		if (errno == EACCES)
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);	
-		else
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	bytes_read = read(file_from, buffer, BUFFER_SIZE);
-	if (bytes_read == -1) 
-	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		close(file_from);
-		exit(98); 
+		exit(98);
 	}
 	/*open file_to for writing, create if needed, truncate if exist*/
 	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
@@ -73,10 +64,10 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 	/*cp file*/
-	while ((bytes_read = read(file_from, buffer, BUFFER_SIZE)) > 0)
+	while ((r = read(file_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		bytes_written = write(file_to, buffer, bytes_read);
-		if (bytes_written != bytes_read || bytes_written == -1)
+		w = write(file_to, buffer, bytes_read);
+		if (w != r || w == -1)
 		{
 			close(file_from);
 			close(file_to);
