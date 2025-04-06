@@ -52,11 +52,10 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	bytes_read = read(file_from, buffer, BUFFER_SIZE);
+	bytes_read = read(file_from, buffer, 1);
 	if (bytes_read == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		close(file_from);
 		exit(98);
 	}
 	close(file_from);
