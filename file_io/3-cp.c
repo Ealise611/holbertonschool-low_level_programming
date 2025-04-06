@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	while ((bytes_read = read(file_from, buffer, BUFFER_SIZE)) > 0)
 	{
 		bytes_written = write(file_to, buffer, bytes_read);
-		if (bytes_written != bytes_read || bytes written == -1)
+		if (bytes_written != bytes_read || bytes_written == -1)
 		{
 			close(file_from);
 			close(file_to);
