@@ -48,8 +48,6 @@ int main(int argc, char *argv[])
 
 	/*open file_from for reading*/
 	file_from = open(argv[1], O_RDONLY);
-	r = read(file_from, buffer, BUFFER_SIZE);
-
 	if (file_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
