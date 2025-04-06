@@ -52,15 +52,10 @@ int main(int argc, char *argv[])
 	if (file_from == -1)
 	{
 		if (errno == EACCES)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);	
 		else
-		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+		exit(98);
 	}
 	/*open file_to for writing, create if needed, truncate if exist*/
 	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
