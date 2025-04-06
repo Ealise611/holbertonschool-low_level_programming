@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 	/*cp file*/
 	while ((r = read(file_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		w = write(file_to, buffer, bytes_read);
+		w = write(file_to, buffer, r);
 		if (w != r || w == -1)
 		{
 			close(file_from);
