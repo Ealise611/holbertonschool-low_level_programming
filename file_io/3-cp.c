@@ -10,20 +10,6 @@
 #define BUFFER_SIZE 1024
 
 /**
- * close_file - close file
- * @fd: file to be close
- */
-
-void close_file(int fd)
-{
-	if (close(fd) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
-}
-
-/**
  * main - Copies the content of one file to another.
  * @argc: The number of arguments passed to the program.
  * @argv: An array of strings representing the arguments.
@@ -76,9 +62,7 @@ int main(int argc, char *argv[])
 	/*open file_to for writing, create if needed, truncate if exist*/
 	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (file_to == -1)
-	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
-	}
 	/*cp file*/
 	while (r > 0)
 	{
@@ -92,7 +76,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 	}
-	close_file(file_from);
-	close_file(file_to);
+	if (close(file_from) == -1 || close(file_to) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd\n"), exit(100);
 	return (0);
 }
