@@ -58,18 +58,18 @@
  		dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]), exit(99);
  	}
  	/*cp file*/
- 
- 	while ((bytes_read = read(file_from, buffer, BUFFER_SIZE)) > 0)
- 	{
-		bytes_written = write(file_to, buffer, bytes_read);
- 		if (bytes_written != bytes_read || bytes_written == -1)
- 		{
- 			dprintf(STDERR_FILENO,"Error: Can't read to %s\n", argv[2]), exit(99);
- 		}
-		if (bytes_read == -1)
-		{
-			dprintf(STDERR_FILENO,"Error: Can't read from %s\n", argv[1]), exit(98);
- 		}
+       bytes_read = 1;
+       while (bytes_read)
+       {
+	       bytes_read = read(file_from, buffer, BUFFER_SIZE);
+	       if (bytes_read == -1)
+		       dprintf(STDERR_FILENO,"Error: Can't read from %s\n", argv[1]), exit(98);
+	       if (bytes_read > 0)
+	       {
+		       bytes_written = write(file_to, buffer, bytes_read);
+		       if (bytes_written != bytes_read || bytes_written == -1)
+			       dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]), exit(99);
+	       }
 	}
  	if (close(file_from) == -1)
  	{
