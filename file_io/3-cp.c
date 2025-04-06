@@ -84,18 +84,11 @@ int main(int argc, char *argv[])
 	{
 		w = write(file_to, buffer, r);
 		if (w == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(file_from);
-			close(file_to);
-			exit(99);
-		}
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 		r = read(file_from, buffer, BUFFER_SIZE);
 		if (r == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			close(file_from);
-			close(file_to);
 			exit(98);
 		}
 	}
