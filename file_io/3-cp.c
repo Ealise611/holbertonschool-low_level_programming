@@ -56,28 +56,25 @@
  	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
  	if (file_to == -1)
  	{
- 		dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]);
- 		exit(99);
+ 		dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]), exit(99);
  	}
  	/*cp file*/
- 	bytes_read = read(file_from, buffer, BUFFER_SIZE);
+	bytes_read = 1;
  
- 	while (bytes_read > 0)
+ 	while (bytes_read)
  	{
- 		bytes_written = write(file_to, buffer, bytes_read);
- 		if (bytes_written == -1)
+		bytes_read = read(file_from, buffer, BUFFER_SIZE);
+ 		if (bytes_read == -1)
  		{
- 			dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]);
- 			exit(99);
+ 			dprintf(STDERR_FILENO,"Error: Can't read to %s\n", argv[2]), exit(99);
  		}
- 		/*read the next chunk of the file*/
- 		bytes_read = read(file_from, buffer, BUFFER_SIZE);
- 	}
- 	if (bytes_read == -1)
- 	{
- 		dprintf(STDERR_FILENO,"Error: Can't read from file %s\n", argv[1]);
- 		exit(98);
- 	}
+		if (bytes_read > 0)
+		{
+			bytes_written = write(file_to, buffer, bytes_read);
+			if (bytes_written != bytes_read || bytes_written == -1)
+				dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]), exit(99);
+ 		}
+	}
  	if (close(file_from) == -1)
  	{
  		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
@@ -90,4 +87,3 @@
  	}
  	return (0);
  }
- 
