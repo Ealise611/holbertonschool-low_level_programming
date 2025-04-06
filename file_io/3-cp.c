@@ -37,16 +37,23 @@
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
+	int file_from, file_to, fd_from;
 	ssize_t bytes_read, bytes_written;
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
 
+
 	/*open file_from for reading*/
 	file_from = open(argv[1], O_RDONLY);
 	if (file_from == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	bytes_read = read(file_from, buffer, BUFFER_SIZE);
+	if (bytes_read == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
