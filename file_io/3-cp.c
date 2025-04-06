@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
 	if (bytes_read == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		close(file_from);
 		exit(98);
 	}
 	close(file_from);
